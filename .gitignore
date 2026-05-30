@@ -1,5 +1,6 @@
 # Node / Cocos
 node_modules/
+dist-tests/
 temp/
 library/
 local/
