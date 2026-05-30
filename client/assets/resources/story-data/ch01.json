@@ -1,0 +1,173 @@
+{
+  "Chapter": {
+    "Id": "ch01",
+    "Title": "Chapter 1 - Corridor Noise",
+    "Pov": "A",
+    "EntryNode": "ch01_a_001",
+    "Summary": "A searches the old building for the source of the signal.",
+    "UnlockRules": {
+      "unlock_by_ending": "ch00_a_canon_signal"
+    }
+  },
+  "Nodes": [
+    {
+      "Id": "ch01_a_001",
+      "Chapter": "ch01",
+      "Pov": "A",
+      "NodeKind": "story",
+      "Title": "Dim Corridor",
+      "Body": "The corridor lights flicker in a rhythm that matches the signal.",
+      "Effects": [
+        {
+          "Type": "world.set",
+          "Target": "world.flags.ch01_started",
+          "Value": "true"
+        },
+        {
+          "Type": "world.set",
+          "Target": "world.scene.current_area",
+          "Value": "corridor"
+        }
+      ],
+      "Choices": [
+        {
+          "Id": "inspect_lock",
+          "Text": "Inspect the old lock",
+          "Requirements": {
+            "All": [
+              {
+                "Var": "attributes.A.insight",
+                "Op": "\u003E=",
+                "Value": "2"
+              }
+            ]
+          },
+          "Effects": [
+            {
+              "Type": "clue.add",
+              "Target": "clues.old_lock_mark",
+              "Value": "true"
+            }
+          ],
+          "Next": "ch01_a_002",
+          "Hidden": false
+        },
+        {
+          "Id": "push_ahead",
+          "Text": "Push ahead without checking",
+          "Effects": [
+            {
+              "Type": "attribute.add",
+              "Target": "attributes.A.stamina",
+              "Value": "-1"
+            }
+          ],
+          "Next": "ch01_a_router_final",
+          "Hidden": false
+        }
+      ]
+    },
+    {
+      "Id": "ch01_a_002",
+      "Chapter": "ch01",
+      "Pov": "A",
+      "NodeKind": "story",
+      "Title": "Mark on the Lock",
+      "Body": "A scratch on the lock matches the broken waveform from the phone.",
+      "Effects": [
+        {
+          "Type": "attribute.add",
+          "Target": "attributes.A.pollution",
+          "Value": "5"
+        }
+      ],
+      "Next": "ch01_a_router_final"
+    },
+    {
+      "Id": "ch01_a_router_final",
+      "Chapter": "ch01",
+      "Pov": "A",
+      "NodeKind": "router",
+      "Title": "Final Route Check",
+      "Routes": [
+        {
+          "Conditions": {
+            "All": [
+              {
+                "Var": "clues.old_lock_mark",
+                "Op": "==",
+                "Value": "true"
+              }
+            ]
+          },
+          "Next": "ch01_a_canon_trace_node"
+        },
+        {
+          "Conditions": {
+            "All": []
+          },
+          "Next": "ch01_a_closed_lost_node"
+        }
+      ]
+    },
+    {
+      "Id": "ch01_a_closed_lost_node",
+      "Chapter": "ch01",
+      "Pov": "A",
+      "NodeKind": "ending",
+      "Title": "Closed Ending - Lost Signal",
+      "Body": "A loses the trail and leaves with only a headache.",
+      "Ending": {
+        "Id": "ch01_a_closed_lost"
+      }
+    },
+    {
+      "Id": "ch01_a_canon_trace_node",
+      "Chapter": "ch01",
+      "Pov": "A",
+      "NodeKind": "ending",
+      "Title": "Canon Ending - Signal Trace",
+      "Body": "A finds the first stable trace of the anomaly.",
+      "Ending": {
+        "Id": "ch01_a_canon_trace"
+      }
+    }
+  ],
+  "Endings": [
+    {
+      "Id": "ch01_a_closed_lost",
+      "Chapter": "ch01",
+      "Pov": "A",
+      "EndingType": "closed",
+      "Category": "lost_trace",
+      "Title": "Lost Signal",
+      "Summary": "A leaves the old building without finding the trace.",
+      "Effects": [
+        {
+          "Type": "ending.unlock",
+          "Target": "endings.ch01_a_closed_lost"
+        }
+      ]
+    },
+    {
+      "Id": "ch01_a_canon_trace",
+      "Chapter": "ch01",
+      "Pov": "A",
+      "EndingType": "canon",
+      "Category": "mainline",
+      "Title": "Signal Trace",
+      "Summary": "A finds proof that the anomaly has a repeatable pattern.",
+      "CanonState": {
+        "world.timeline.anomaly_phase": "active",
+        "world.flags.a_knows_anomaly_exists": "true",
+        "clues.core_signal": "true"
+      },
+      "Effects": [
+        {
+          "Type": "ending.unlock",
+          "Target": "endings.ch01_a_canon_trace"
+        }
+      ]
+    }
+  ]
+}

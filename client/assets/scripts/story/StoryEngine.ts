@@ -13,6 +13,7 @@ export interface StoryEngineState {
 export class StoryEngine {
   private chapter?: RuntimeChapter;
   private currentNode?: StoryNode;
+  private currentEnding?: EndingDefinition;
   private readonly choices: ChoiceRecord[] = [];
   private readonly evaluator: ConditionEvaluator;
   private readonly effects: EffectApplier;
@@ -35,6 +36,7 @@ export class StoryEngine {
     }
 
     this.currentNode = node;
+    this.currentEnding = undefined;
     this.effects.applyMany(node.Effects);
 
     if (node.NodeKind === "router") {
@@ -103,6 +105,10 @@ export class StoryEngine {
     return [...this.choices];
   }
 
+  getCurrentEnding(): EndingDefinition | undefined {
+    return this.currentEnding;
+  }
+
   getWorldState(): Record<string, unknown> {
     return this.worldState.snapshot();
   }
@@ -119,6 +125,7 @@ export class StoryEngine {
 
   private enterEnding(endingId: string): StoryEngineState {
     const ending = this.findEnding(endingId);
+    this.currentEnding = ending;
     this.effects.applyMany(ending.Effects);
 
     if (ending.EndingType === "canon" && ending.CanonState) {

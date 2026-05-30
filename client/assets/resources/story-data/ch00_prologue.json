@@ -1,0 +1,127 @@
+{
+  "Chapter": {
+    "Id": "ch00_prologue",
+    "Title": "Prologue",
+    "Pov": "A",
+    "EntryNode": "ch00_a_001",
+    "Summary": "A follows a repeating signal into the rain."
+  },
+  "Nodes": [
+    {
+      "Id": "ch00_a_001",
+      "Chapter": "ch00_prologue",
+      "Pov": "A",
+      "NodeKind": "story",
+      "Title": "Rain Signal",
+      "Body": "The same broken tone repeats from A\u0027s phone.",
+      "Effects": [
+        {
+          "Type": "world.set",
+          "Target": "world.timeline.current_time",
+          "Value": "22:00"
+        }
+      ],
+      "Choices": [
+        {
+          "Id": "follow_signal",
+          "Text": "Follow the signal",
+          "Effects": [
+            {
+              "Type": "clue.add",
+              "Target": "clues.core_signal",
+              "Value": "true"
+            }
+          ],
+          "Next": "ch00_a_002",
+          "Hidden": false
+        },
+        {
+          "Id": "ignore_signal",
+          "Text": "Go home",
+          "Next": "ch00_a_closed_home_node",
+          "Hidden": false
+        }
+      ]
+    },
+    {
+      "Id": "ch00_a_002",
+      "Chapter": "ch00_prologue",
+      "Pov": "A",
+      "NodeKind": "story",
+      "Title": "Old Building",
+      "Body": "The signal grows clearer near the sealed old building.",
+      "Effects": [
+        {
+          "Type": "world.set",
+          "Target": "world.scene.current_area",
+          "Value": "old_building"
+        },
+        {
+          "Type": "world.set",
+          "Target": "world.scene.door_old_building_open",
+          "Value": "true"
+        }
+      ],
+      "Next": "ch00_a_canon_signal_node"
+    },
+    {
+      "Id": "ch00_a_closed_home_node",
+      "Chapter": "ch00_prologue",
+      "Pov": "A",
+      "NodeKind": "ending",
+      "Title": "Closed Ending - Ordinary Rain",
+      "Body": "A leaves before anything impossible happens.",
+      "Ending": {
+        "Id": "ch00_a_closed_home"
+      }
+    },
+    {
+      "Id": "ch00_a_canon_signal_node",
+      "Chapter": "ch00_prologue",
+      "Pov": "A",
+      "NodeKind": "ending",
+      "Title": "Canon Ending - The Door Opens",
+      "Body": "A opens the old building door and crosses the first threshold.",
+      "Ending": {
+        "Id": "ch00_a_canon_signal"
+      }
+    }
+  ],
+  "Endings": [
+    {
+      "Id": "ch00_a_closed_home",
+      "Chapter": "ch00_prologue",
+      "Pov": "A",
+      "EndingType": "closed",
+      "Category": "retreat",
+      "Title": "Ordinary Rain",
+      "Summary": "A ignores the signal and returns home.",
+      "Effects": [
+        {
+          "Type": "ending.unlock",
+          "Target": "endings.ch00_a_closed_home"
+        }
+      ]
+    },
+    {
+      "Id": "ch00_a_canon_signal",
+      "Chapter": "ch00_prologue",
+      "Pov": "A",
+      "EndingType": "canon",
+      "Category": "mainline",
+      "Title": "The Door Opens",
+      "Summary": "A confirms the anomaly exists and enters the old building.",
+      "CanonState": {
+        "world.flags.ch00_finished": "true",
+        "world.flags.a_knows_anomaly_exists": "true",
+        "clues.core_signal": "true"
+      },
+      "Effects": [
+        {
+          "Type": "ending.unlock",
+          "Target": "endings.ch00_a_canon_signal"
+        }
+      ]
+    }
+  ]
+}

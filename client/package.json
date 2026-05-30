@@ -1,10 +1,11 @@
 {
-  "name": "noctilink-client-core",
+  "name": "noctilink-client",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.node.json",
+    "sync-story-data": "node tools/sync-story-data.mjs",
     "test": "npm run build && node dist-tests/tests/StoryEngine.test.js"
   },
   "devDependencies": {
