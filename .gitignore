@@ -1,0 +1,33 @@
+# Node / Cocos
+node_modules/
+temp/
+library/
+local/
+build/
+profiles/
+*.log
+
+# Cocos generated
+client/temp/
+client/library/
+client/local/
+client/build/
+client/profiles/
+
+# .NET
+bin/
+obj/
+.vs/
+*.user
+*.suo
+tools/StoryTool/publish/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Generated story data can be committed during MVP only when explicitly needed.
