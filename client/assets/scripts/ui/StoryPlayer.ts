@@ -23,6 +23,12 @@ export class StoryPlayer extends Component {
   private engine: StoryEngine | null = null;
   private currentChoices: StoryChoice[] = [];
 
+  onLoad() {
+    this.choiceButtons.forEach((button, index) => {
+      button.node.on(Button.EventType.CLICK, () => this.choose(index), this);
+    });
+  }
+
   start() {
     this.loadChapter("ch00_prologue");
   }
