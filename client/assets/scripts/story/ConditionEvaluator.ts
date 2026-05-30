@@ -1,5 +1,5 @@
-import type { Condition, ConditionGroup, StoryValue } from "./types.js";
-import { WorldStateStore } from "./WorldStateStore.js";
+import type { Condition, ConditionGroup, StoryValue } from "./types";
+import { WorldStateStore } from "./WorldStateStore";
 
 export class ConditionEvaluator {
   constructor(private readonly state: WorldStateStore) {}

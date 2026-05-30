@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { StoryEngine, WorldStateStore, type RuntimeChapter } from "../assets/scripts/story/index.js";
+import { StoryEngine, WorldStateStore, type RuntimeChapter } from "../assets/scripts/story";
 
 const chapterPath = resolve("../dist/story-data/ch00_prologue.json");
 const chapter = JSON.parse(readFileSync(chapterPath, "utf8")) as RuntimeChapter;

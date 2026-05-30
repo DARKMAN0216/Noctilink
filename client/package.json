@@ -1,7 +1,6 @@
 {
   "name": "noctilink-client",
   "private": true,
-  "type": "module",
   "scripts": {
     "build": "tsc -p tsconfig.node.json",
     "sync-story-data": "node tools/sync-story-data.mjs",

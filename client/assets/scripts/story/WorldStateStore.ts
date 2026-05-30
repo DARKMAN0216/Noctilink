@@ -1,4 +1,4 @@
-import type { StoryValue } from "./types.js";
+import type { StoryValue } from "./types";
 
 export class WorldStateStore {
   private readonly values = new Map<string, StoryValue>();

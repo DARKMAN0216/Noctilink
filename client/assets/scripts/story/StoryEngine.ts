@@ -1,7 +1,7 @@
-import { ConditionEvaluator } from "./ConditionEvaluator.js";
-import { EffectApplier } from "./EffectApplier.js";
-import type { ChoiceRecord, EndingDefinition, RuntimeChapter, StoryChoice, StoryNode } from "./types.js";
-import { WorldStateStore } from "./WorldStateStore.js";
+import { ConditionEvaluator } from "./ConditionEvaluator";
+import { EffectApplier } from "./EffectApplier";
+import type { ChoiceRecord, EndingDefinition, RuntimeChapter, StoryChoice, StoryNode } from "./types";
+import { WorldStateStore } from "./WorldStateStore";
 
 export interface StoryEngineState {
   chapterId: string;

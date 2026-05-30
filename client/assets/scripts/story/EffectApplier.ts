@@ -1,5 +1,5 @@
-import type { Effect } from "./types.js";
-import { WorldStateStore } from "./WorldStateStore.js";
+import type { Effect } from "./types";
+import { WorldStateStore } from "./WorldStateStore";
 
 export class EffectApplier {
   constructor(private readonly state: WorldStateStore) {}

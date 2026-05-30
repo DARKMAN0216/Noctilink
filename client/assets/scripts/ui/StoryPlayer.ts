@@ -1,5 +1,5 @@
-import { _decorator, Button, Component, JsonAsset, Label, Node, resources } from "cc";
-import { StoryEngine, WorldStateStore, type RuntimeChapter, type StoryChoice } from "../story/index.js";
+import { _decorator, Button, Component, JsonAsset, Label, resources } from "cc";
+import { StoryEngine, WorldStateStore, type RuntimeChapter, type StoryChoice } from "../story";
 
 const { ccclass, property } = _decorator;
 
