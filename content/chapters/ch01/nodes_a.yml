@@ -1,0 +1,80 @@
+nodes:
+  - id: ch01_a_001
+    chapter: ch01
+    pov: A
+    node_kind: story
+    title: Dim Corridor
+    body: The corridor lights flicker in a rhythm that matches the signal.
+    effects:
+      - type: world.set
+        target: world.flags.ch01_started
+        value: true
+      - type: world.set
+        target: world.scene.current_area
+        value: corridor
+    choices:
+      - id: inspect_lock
+        text: Inspect the old lock
+        requirements:
+          all:
+            - var: attributes.A.insight
+              op: ">="
+              value: 2
+        effects:
+          - type: clue.add
+            target: clues.old_lock_mark
+            value: true
+        next: ch01_a_002
+      - id: push_ahead
+        text: Push ahead without checking
+        effects:
+          - type: attribute.add
+            target: attributes.A.stamina
+            value: -1
+        next: ch01_a_router_final
+
+  - id: ch01_a_002
+    chapter: ch01
+    pov: A
+    node_kind: story
+    title: Mark on the Lock
+    body: A scratch on the lock matches the broken waveform from the phone.
+    effects:
+      - type: attribute.add
+        target: attributes.A.pollution
+        value: 5
+    next: ch01_a_router_final
+
+  - id: ch01_a_router_final
+    chapter: ch01
+    pov: A
+    node_kind: router
+    title: Final Route Check
+    routes:
+      - conditions:
+          all:
+            - var: clues.old_lock_mark
+              op: "=="
+              value: true
+        next: ch01_a_canon_trace_node
+      - conditions:
+          all: []
+        next: ch01_a_closed_lost_node
+
+  - id: ch01_a_closed_lost_node
+    chapter: ch01
+    pov: A
+    node_kind: ending
+    title: Closed Ending - Lost Signal
+    body: A loses the trail and leaves with only a headache.
+    ending:
+      id: ch01_a_closed_lost
+
+  - id: ch01_a_canon_trace_node
+    chapter: ch01
+    pov: A
+    node_kind: ending
+    title: Canon Ending - Signal Trace
+    body: A finds the first stable trace of the anomaly.
+    ending:
+      id: ch01_a_canon_trace

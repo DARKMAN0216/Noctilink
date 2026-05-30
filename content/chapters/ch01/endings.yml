@@ -1,0 +1,26 @@
+endings:
+  - id: ch01_a_closed_lost
+    chapter: ch01
+    pov: A
+    ending_type: closed
+    category: lost_trace
+    title: Lost Signal
+    summary: A leaves the old building without finding the trace.
+    effects:
+      - type: ending.unlock
+        target: endings.ch01_a_closed_lost
+
+  - id: ch01_a_canon_trace
+    chapter: ch01
+    pov: A
+    ending_type: canon
+    category: mainline
+    title: Signal Trace
+    summary: A finds proof that the anomaly has a repeatable pattern.
+    canon_state:
+      world.timeline.anomaly_phase: active
+      world.flags.a_knows_anomaly_exists: true
+      clues.core_signal: true
+    effects:
+      - type: ending.unlock
+        target: endings.ch01_a_canon_trace

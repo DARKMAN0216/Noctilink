@@ -1,0 +1,81 @@
+variables:
+  - id: attributes.A.status
+    type: enum
+    default: alive
+    values: [alive, missing, injured]
+    canon_allowed: true
+
+  - id: attributes.A.sanity
+    type: int
+    default: 50
+    min: 0
+    max: 100
+    canon_allowed: false
+
+  - id: attributes.A.stamina
+    type: int
+    default: 10
+    min: 0
+    max: 20
+    canon_allowed: false
+
+  - id: attributes.A.insight
+    type: int
+    default: 2
+    min: 0
+    max: 10
+    canon_allowed: false
+
+  - id: attributes.A.pollution
+    type: int
+    default: 0
+    min: 0
+    max: 100
+    canon_allowed: false
+
+  - id: world.scene.current_area
+    type: enum
+    default: street
+    values: [street, old_building, corridor, signal_room]
+    canon_allowed: false
+
+  - id: world.scene.door_old_building_open
+    type: bool
+    default: false
+    canon_allowed: false
+
+  - id: world.timeline.current_time
+    type: string
+    default: "22:00"
+    canon_allowed: false
+
+  - id: world.timeline.anomaly_phase
+    type: enum
+    default: dormant
+    values: [dormant, active, exposed]
+    canon_allowed: true
+
+  - id: world.flags.ch00_finished
+    type: bool
+    default: false
+    canon_allowed: true
+
+  - id: world.flags.ch01_started
+    type: bool
+    default: false
+    canon_allowed: true
+
+  - id: world.flags.a_knows_anomaly_exists
+    type: bool
+    default: false
+    canon_allowed: true
+
+  - id: clues.core_signal
+    type: bool
+    default: false
+    canon_allowed: true
+
+  - id: clues.old_lock_mark
+    type: bool
+    default: false
+    canon_allowed: false

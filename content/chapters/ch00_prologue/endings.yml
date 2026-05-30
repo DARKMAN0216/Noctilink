@@ -1,0 +1,26 @@
+endings:
+  - id: ch00_a_closed_home
+    chapter: ch00_prologue
+    pov: A
+    ending_type: closed
+    category: retreat
+    title: Ordinary Rain
+    summary: A ignores the signal and returns home.
+    effects:
+      - type: ending.unlock
+        target: endings.ch00_a_closed_home
+
+  - id: ch00_a_canon_signal
+    chapter: ch00_prologue
+    pov: A
+    ending_type: canon
+    category: mainline
+    title: The Door Opens
+    summary: A confirms the anomaly exists and enters the old building.
+    canon_state:
+      world.flags.ch00_finished: true
+      world.flags.a_knows_anomaly_exists: true
+      clues.core_signal: true
+    effects:
+      - type: ending.unlock
+        target: endings.ch00_a_canon_signal

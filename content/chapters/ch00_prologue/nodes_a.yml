@@ -1,0 +1,55 @@
+nodes:
+  - id: ch00_a_001
+    chapter: ch00_prologue
+    pov: A
+    node_kind: story
+    title: Rain Signal
+    body: The same broken tone repeats from A's phone.
+    effects:
+      - type: world.set
+        target: world.timeline.current_time
+        value: "22:00"
+    choices:
+      - id: follow_signal
+        text: Follow the signal
+        effects:
+          - type: clue.add
+            target: clues.core_signal
+            value: true
+        next: ch00_a_002
+      - id: ignore_signal
+        text: Go home
+        next: ch00_a_closed_home_node
+
+  - id: ch00_a_002
+    chapter: ch00_prologue
+    pov: A
+    node_kind: story
+    title: Old Building
+    body: The signal grows clearer near the sealed old building.
+    effects:
+      - type: world.set
+        target: world.scene.current_area
+        value: old_building
+      - type: world.set
+        target: world.scene.door_old_building_open
+        value: true
+    next: ch00_a_canon_signal_node
+
+  - id: ch00_a_closed_home_node
+    chapter: ch00_prologue
+    pov: A
+    node_kind: ending
+    title: Closed Ending - Ordinary Rain
+    body: A leaves before anything impossible happens.
+    ending:
+      id: ch00_a_closed_home
+
+  - id: ch00_a_canon_signal_node
+    chapter: ch00_prologue
+    pov: A
+    node_kind: ending
+    title: Canon Ending - The Door Opens
+    body: A opens the old building door and crosses the first threshold.
+    ending:
+      id: ch00_a_canon_signal

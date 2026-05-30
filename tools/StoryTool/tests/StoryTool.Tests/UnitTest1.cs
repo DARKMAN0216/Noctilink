@@ -52,6 +52,49 @@ public class CliTests
             Directory.CreateDirectory(Path.Combine(root, "characters"));
             Directory.CreateDirectory(Path.Combine(root, "variables"));
             Directory.CreateDirectory(Path.Combine(root, "endings"));
+            Directory.CreateDirectory(Path.Combine(root, "chapters", "ch00"));
+
+            File.WriteAllText(Path.Combine(root, "variables", "schema.yml"), """
+                variables:
+                  - id: attributes.A.sanity
+                    type: int
+                    default: 50
+                    canon_allowed: false
+                  - id: world.flags.ch00_finished
+                    type: bool
+                    default: false
+                    canon_allowed: true
+                """);
+
+            File.WriteAllText(Path.Combine(root, "chapters", "ch00", "chapter.yml"), """
+                id: ch00
+                title: Test Chapter
+                pov: A
+                entry_node: ch00_a_001
+                """);
+
+            File.WriteAllText(Path.Combine(root, "chapters", "ch00", "nodes_a.yml"), """
+                nodes:
+                  - id: ch00_a_001
+                    chapter: ch00
+                    pov: A
+                    node_kind: ending
+                    title: End
+                    ending:
+                      id: ch00_a_canon
+                """);
+
+            File.WriteAllText(Path.Combine(root, "chapters", "ch00", "endings.yml"), """
+                endings:
+                  - id: ch00_a_canon
+                    chapter: ch00
+                    pov: A
+                    ending_type: canon
+                    category: mainline
+                    title: Canon
+                    canon_state:
+                      world.flags.ch00_finished: true
+                """);
         }
 
         return root;
