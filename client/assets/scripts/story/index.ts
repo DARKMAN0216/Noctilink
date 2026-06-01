@@ -3,3 +3,4 @@ export * from "./WorldStateStore";
 export * from "./ConditionEvaluator";
 export * from "./EffectApplier";
 export * from "./StoryEngine";
+export * from "./SaveManager";

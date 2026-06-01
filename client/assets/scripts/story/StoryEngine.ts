@@ -1,6 +1,6 @@
 import { ConditionEvaluator } from "./ConditionEvaluator";
 import { EffectApplier } from "./EffectApplier";
-import type { ChoiceRecord, EndingDefinition, RuntimeChapter, StoryChoice, StoryNode } from "./types";
+import type { ChoiceRecord, EndingDefinition, RuntimeChapter, StoryChoice, StoryNode, StoryValue } from "./types";
 import { WorldStateStore } from "./WorldStateStore";
 
 export interface StoryEngineState {
@@ -26,6 +26,19 @@ export class StoryEngine {
   loadChapter(chapter: RuntimeChapter): StoryEngineState {
     this.chapter = chapter;
     return this.enterNode(chapter.Chapter.EntryNode);
+  }
+
+  restoreChapter(chapter: RuntimeChapter, nodeId: string, endingId?: string): StoryEngineState {
+    this.chapter = chapter;
+
+    const node = chapter.Nodes.find((candidate) => candidate.Id === nodeId);
+    if (!node) {
+      return this.loadChapter(chapter);
+    }
+
+    this.currentNode = node;
+    this.currentEnding = endingId ? this.findEnding(endingId) : undefined;
+    return this.describeState();
   }
 
   enterNode(nodeId: string): StoryEngineState {
@@ -105,11 +118,15 @@ export class StoryEngine {
     return [...this.choices];
   }
 
+  getCurrentNodeId(): string {
+    return this.getCurrentNode().Id;
+  }
+
   getCurrentEnding(): EndingDefinition | undefined {
     return this.currentEnding;
   }
 
-  getWorldState(): Record<string, unknown> {
+  getWorldState(): Record<string, StoryValue> {
     return this.worldState.snapshot();
   }
 

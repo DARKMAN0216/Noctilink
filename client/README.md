@@ -21,3 +21,5 @@ Create the first playable scene in Cocos Creator:
 9. Press Preview.
 
 `StoryPlayer` loads `resources/story-data/ch00_prologue.json` and binds button clicks automatically.
+
+Preview progress is saved automatically through local storage. Use the ending action `重新开始` to clear the current local run and restart from the prologue.

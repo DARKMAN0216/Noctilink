@@ -94,3 +94,13 @@ export interface ChoiceRecord {
   choiceId: string;
   at: string;
 }
+
+export interface StorySaveData {
+  saveVersion: string;
+  updatedAt: string;
+  currentChapterId: string;
+  currentNodeId: string;
+  currentEndingId?: string;
+  worldState: Record<string, StoryValue>;
+  choiceHistory: ChoiceRecord[];
+}

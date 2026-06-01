@@ -1,7 +1,20 @@
-import { _decorator, Button, Component, JsonAsset, Label, resources } from "cc";
-import { StoryEngine, WorldStateStore, type RuntimeChapter, type StoryChoice } from "../story";
+import { _decorator, Button, Component, JsonAsset, Label, resources, sys } from "cc";
+import {
+  SaveManager,
+  StoryEngine,
+  WorldStateStore,
+  type RuntimeChapter,
+  type StoryChoice,
+  type StorySaveData
+} from "../story";
 
 const { ccclass, property } = _decorator;
+
+const chapterLoadFailedText = "\u7ae0\u8282\u52a0\u8f7d\u5931\u8d25";
+const endingText = "\u7ed3\u5c40";
+const nodeText = "\u8282\u70b9";
+const restartText = "\u91cd\u65b0\u5f00\u59cb";
+const enterChapterOneText = "\u8fdb\u5165\u7b2c\u4e00\u7ae0";
 
 @ccclass("StoryPlayer")
 export class StoryPlayer extends Component {
@@ -20,6 +33,7 @@ export class StoryPlayer extends Component {
   @property(Label)
   statusLabel: Label | null = null;
 
+  private readonly saveManager = new SaveManager(sys.localStorage);
   private engine: StoryEngine | null = null;
   private worldState = this.createInitialWorldState();
   private currentChapterId = "ch00_prologue";
@@ -33,21 +47,34 @@ export class StoryPlayer extends Component {
   }
 
   start() {
+    const save = this.saveManager.load();
+    if (save) {
+      this.restoreGame(save);
+      return;
+    }
+
     this.startNewGame();
   }
 
-  loadChapter(chapterId: string) {
+  loadChapter(chapterId: string, restoreNodeId?: string, restoreEndingId?: string) {
     resources.load(`story-data/${chapterId}`, JsonAsset, (error, asset) => {
       if (error || !asset) {
-        this.setStatus(`章节加载失败：${chapterId}`);
+        this.setStatus(`${chapterLoadFailedText}: ${chapterId}`);
         return;
       }
 
       this.currentChapterId = chapterId;
       this.engine = new StoryEngine(this.worldState);
 
-      this.engine.loadChapter(asset.json as RuntimeChapter);
+      const chapter = asset.json as RuntimeChapter;
+      if (restoreNodeId) {
+        this.engine.restoreChapter(chapter, restoreNodeId, restoreEndingId);
+      } else {
+        this.engine.loadChapter(chapter);
+      }
+
       this.render();
+      this.saveCurrentProgress();
     });
   }
 
@@ -65,6 +92,7 @@ export class StoryPlayer extends Component {
 
     this.engine.choose(choice.Id);
     this.render();
+    this.saveCurrentProgress();
   }
 
   private render() {
@@ -92,7 +120,7 @@ export class StoryPlayer extends Component {
       this.renderChoices(current);
     }
 
-    this.setStatus(ending ? `结局：${ending.Title}` : `节点：${node.Id}`);
+    this.setStatus(ending ? `${endingText}: ${ending.Title}` : `${nodeText}: ${node.Id}`);
   }
 
   private renderChoices(choices: StoryChoice[]) {
@@ -105,14 +133,14 @@ export class StoryPlayer extends Component {
   private renderEndingActions(isCanonEnding: boolean) {
     const actions = [
       {
-        text: "重新开始",
+        text: restartText,
         run: () => this.startNewGame()
       }
     ];
 
     if (isCanonEnding && this.currentChapterId === "ch00_prologue") {
       actions.push({
-        text: "进入第一章",
+        text: enterChapterOneText,
         run: () => this.loadChapter("ch01")
       });
     }
@@ -137,7 +165,27 @@ export class StoryPlayer extends Component {
     }
   }
 
+  private restoreGame(save: StorySaveData) {
+    this.worldState = new WorldStateStore(save.worldState);
+    this.loadChapter(save.currentChapterId, save.currentNodeId, save.currentEndingId);
+  }
+
+  private saveCurrentProgress() {
+    if (!this.engine) {
+      return;
+    }
+
+    this.saveManager.save({
+      currentChapterId: this.currentChapterId,
+      currentNodeId: this.engine.getCurrentNodeId(),
+      currentEndingId: this.engine.getCurrentEnding()?.Id,
+      worldState: this.engine.getWorldState(),
+      choiceHistory: this.engine.getChoiceHistory()
+    });
+  }
+
   private startNewGame() {
+    this.saveManager.clear();
     this.worldState = this.createInitialWorldState();
     this.loadChapter("ch00_prologue");
   }
