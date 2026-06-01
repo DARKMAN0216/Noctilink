@@ -4,7 +4,7 @@
     "Title": "Prologue",
     "Pov": "A",
     "EntryNode": "ch00_a_001",
-    "Summary": "A follows a repeating signal into the rain."
+    "Summary": "A \u5728\u96E8\u591C\u4E2D\u8FFD\u8E2A\u4E00\u6BB5\u53CD\u590D\u51FA\u73B0\u7684\u5F02\u5E38\u4FE1\u53F7\u3002"
   },
   "Nodes": [
     {
@@ -12,8 +12,8 @@
       "Chapter": "ch00_prologue",
       "Pov": "A",
       "NodeKind": "story",
-      "Title": "Rain Signal",
-      "Body": "The same broken tone repeats from A\u0027s phone.",
+      "Title": "\u96E8\u591C\u4FE1\u53F7",
+      "Body": "A \u7684\u624B\u673A\u91CC\u53CD\u590D\u54CD\u8D77\u540C\u4E00\u6BB5\u7834\u788E\u7684\u63D0\u793A\u97F3\uFF0C\u50CF\u662F\u6709\u4EBA\u5728\u96E8\u58F0\u540E\u9762\u6572\u95E8\u3002",
       "Effects": [
         {
           "Type": "world.set",
@@ -24,7 +24,7 @@
       "Choices": [
         {
           "Id": "follow_signal",
-          "Text": "Follow the signal",
+          "Text": "\u8FFD\u8E2A\u4FE1\u53F7",
           "Effects": [
             {
               "Type": "clue.add",
@@ -37,7 +37,7 @@
         },
         {
           "Id": "ignore_signal",
-          "Text": "Go home",
+          "Text": "\u76F4\u63A5\u56DE\u5BB6",
           "Next": "ch00_a_closed_home_node",
           "Hidden": false
         }
@@ -48,8 +48,8 @@
       "Chapter": "ch00_prologue",
       "Pov": "A",
       "NodeKind": "story",
-      "Title": "Old Building",
-      "Body": "The signal grows clearer near the sealed old building.",
+      "Title": "\u5E9F\u5F03\u65E7\u697C",
+      "Body": "\u8D8A\u9760\u8FD1\u90A3\u680B\u88AB\u5C01\u4F4F\u7684\u65E7\u697C\uFF0C\u4FE1\u53F7\u5C31\u8D8A\u6E05\u6670\uFF0C\u5C4F\u5E55\u4E0A\u7684\u566A\u70B9\u4E5F\u5F00\u59CB\u6392\u6210\u67D0\u79CD\u5750\u6807\u3002",
       "Effects": [
         {
           "Type": "world.set",
@@ -69,8 +69,8 @@
       "Chapter": "ch00_prologue",
       "Pov": "A",
       "NodeKind": "ending",
-      "Title": "Closed Ending - Ordinary Rain",
-      "Body": "A leaves before anything impossible happens.",
+      "Title": "\u5C01\u95ED\u7ED3\u5C40 - \u666E\u901A\u7684\u96E8",
+      "Body": "A \u5728\u5F02\u53D8\u771F\u6B63\u53D1\u751F\u524D\u79BB\u5F00\u4E86\u73B0\u573A\u3002\u96E8\u591C\u6062\u590D\u5E73\u9759\uFF0C\u53EA\u5269\u624B\u673A\u91CC\u6700\u540E\u4E00\u58F0\u65AD\u97F3\u3002",
       "Ending": {
         "Id": "ch00_a_closed_home"
       }
@@ -80,8 +80,8 @@
       "Chapter": "ch00_prologue",
       "Pov": "A",
       "NodeKind": "ending",
-      "Title": "Canon Ending - The Door Opens",
-      "Body": "A opens the old building door and crosses the first threshold.",
+      "Title": "\u6B63\u53F2\u7ED3\u5C40 - \u95E8\u5F00\u4E86",
+      "Body": "A \u63A8\u5F00\u65E7\u697C\u7684\u95E8\uFF0C\u7B2C\u4E00\u6B21\u8DE8\u8FC7\u73B0\u5B9E\u4E0E\u5F02\u5E38\u4E4B\u95F4\u7684\u8FB9\u754C\u3002",
       "Ending": {
         "Id": "ch00_a_canon_signal"
       }
@@ -94,8 +94,8 @@
       "Pov": "A",
       "EndingType": "closed",
       "Category": "retreat",
-      "Title": "Ordinary Rain",
-      "Summary": "A ignores the signal and returns home.",
+      "Title": "\u666E\u901A\u7684\u96E8",
+      "Summary": "A \u5FFD\u7565\u4FE1\u53F7\u5E76\u8FD4\u56DE\u4F4F\u5904\uFF0C\u5F02\u5E38\u4E8B\u4EF6\u6682\u65F6\u6CA1\u6709\u5C55\u5F00\u3002",
       "Effects": [
         {
           "Type": "ending.unlock",
@@ -109,8 +109,8 @@
       "Pov": "A",
       "EndingType": "canon",
       "Category": "mainline",
-      "Title": "The Door Opens",
-      "Summary": "A confirms the anomaly exists and enters the old building.",
+      "Title": "\u95E8\u5F00\u4E86",
+      "Summary": "A \u786E\u8BA4\u5F02\u5E38\u771F\u5B9E\u5B58\u5728\uFF0C\u5E76\u8FDB\u5165\u5E9F\u5F03\u65E7\u697C\u3002",
       "CanonState": {
         "world.flags.ch00_finished": "true",
         "world.flags.a_knows_anomaly_exists": "true",

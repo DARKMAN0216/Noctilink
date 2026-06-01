@@ -3,30 +3,30 @@ nodes:
     chapter: ch00_prologue
     pov: A
     node_kind: story
-    title: Rain Signal
-    body: The same broken tone repeats from A's phone.
+    title: 雨夜信号
+    body: A 的手机里反复响起同一段破碎的提示音，像是有人在雨声后面敲门。
     effects:
       - type: world.set
         target: world.timeline.current_time
         value: "22:00"
     choices:
       - id: follow_signal
-        text: Follow the signal
+        text: 追踪信号
         effects:
           - type: clue.add
             target: clues.core_signal
             value: true
         next: ch00_a_002
       - id: ignore_signal
-        text: Go home
+        text: 直接回家
         next: ch00_a_closed_home_node
 
   - id: ch00_a_002
     chapter: ch00_prologue
     pov: A
     node_kind: story
-    title: Old Building
-    body: The signal grows clearer near the sealed old building.
+    title: 废弃旧楼
+    body: 越靠近那栋被封住的旧楼，信号就越清晰，屏幕上的噪点也开始排成某种坐标。
     effects:
       - type: world.set
         target: world.scene.current_area
@@ -40,8 +40,8 @@ nodes:
     chapter: ch00_prologue
     pov: A
     node_kind: ending
-    title: Closed Ending - Ordinary Rain
-    body: A leaves before anything impossible happens.
+    title: 封闭结局 - 普通的雨
+    body: A 在异变真正发生前离开了现场。雨夜恢复平静，只剩手机里最后一声断音。
     ending:
       id: ch00_a_closed_home
 
@@ -49,7 +49,7 @@ nodes:
     chapter: ch00_prologue
     pov: A
     node_kind: ending
-    title: Canon Ending - The Door Opens
-    body: A opens the old building door and crosses the first threshold.
+    title: 正史结局 - 门开了
+    body: A 推开旧楼的门，第一次跨过现实与异常之间的边界。
     ending:
       id: ch00_a_canon_signal

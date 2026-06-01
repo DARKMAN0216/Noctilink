@@ -36,7 +36,7 @@ export class StoryPlayer extends Component {
   loadChapter(chapterId: string) {
     resources.load(`story-data/${chapterId}`, JsonAsset, (error, asset) => {
       if (error || !asset) {
-        this.setStatus(`Failed to load chapter: ${chapterId}`);
+        this.setStatus(`章节加载失败：${chapterId}`);
         return;
       }
 
@@ -88,7 +88,7 @@ export class StoryPlayer extends Component {
       }
     }
 
-    this.setStatus(ending ? `Ending: ${ending.Title}` : `Node: ${node.Id}`);
+    this.setStatus(ending ? `结局：${ending.Title}` : `节点：${node.Id}`);
   }
 
   private setStatus(message: string) {

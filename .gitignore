@@ -14,6 +14,8 @@ client/library/
 client/local/
 client/build/
 client/profiles/
+client/.creator/asset-template/
+client/settings/v2/packages/cocos-service.json
 
 # .NET
 bin/
