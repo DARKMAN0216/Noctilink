@@ -1,7 +1,7 @@
 id: ch01
-title: Chapter 1 - Corridor Noise
+title: 第一章 - 走廊噪声
 pov: A
 entry_node: ch01_a_001
-summary: A searches the old building for the source of the signal.
+summary: A 在废弃旧楼里寻找信号源。
 unlock_rules:
   unlock_by_ending: ch00_a_canon_signal

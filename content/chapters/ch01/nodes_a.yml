@@ -3,8 +3,8 @@ nodes:
     chapter: ch01
     pov: A
     node_kind: story
-    title: Dim Corridor
-    body: The corridor lights flicker in a rhythm that matches the signal.
+    title: 昏暗走廊
+    body: 走廊灯忽明忽暗，闪烁的节奏和手机里的异常信号完全一致。
     effects:
       - type: world.set
         target: world.flags.ch01_started
@@ -14,7 +14,7 @@ nodes:
         value: corridor
     choices:
       - id: inspect_lock
-        text: Inspect the old lock
+        text: 检查旧锁
         requirements:
           all:
             - var: attributes.A.insight
@@ -26,7 +26,7 @@ nodes:
             value: true
         next: ch01_a_002
       - id: push_ahead
-        text: Push ahead without checking
+        text: 不检查，直接向前
         effects:
           - type: attribute.add
             target: attributes.A.stamina
@@ -37,8 +37,8 @@ nodes:
     chapter: ch01
     pov: A
     node_kind: story
-    title: Mark on the Lock
-    body: A scratch on the lock matches the broken waveform from the phone.
+    title: 锁上的刻痕
+    body: 旧锁上的一道刻痕，正好对应手机里那段破碎波形的缺口。
     effects:
       - type: attribute.add
         target: attributes.A.pollution
@@ -49,7 +49,7 @@ nodes:
     chapter: ch01
     pov: A
     node_kind: router
-    title: Final Route Check
+    title: 路线判定
     routes:
       - conditions:
           all:
@@ -65,8 +65,8 @@ nodes:
     chapter: ch01
     pov: A
     node_kind: ending
-    title: Closed Ending - Lost Signal
-    body: A loses the trail and leaves with only a headache.
+    title: 封闭结局 - 信号丢失
+    body: A 跟丢了信号，只带着越来越重的头痛离开旧楼。
     ending:
       id: ch01_a_closed_lost
 
@@ -74,7 +74,7 @@ nodes:
     chapter: ch01
     pov: A
     node_kind: ending
-    title: Canon Ending - Signal Trace
-    body: A finds the first stable trace of the anomaly.
+    title: 正史结局 - 信号轨迹
+    body: A 找到了异常第一次稳定重复的痕迹。
     ending:
       id: ch01_a_canon_trace

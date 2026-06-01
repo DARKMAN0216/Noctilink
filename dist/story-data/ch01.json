@@ -1,10 +1,10 @@
 {
   "Chapter": {
     "Id": "ch01",
-    "Title": "Chapter 1 - Corridor Noise",
+    "Title": "\u7B2C\u4E00\u7AE0 - \u8D70\u5ECA\u566A\u58F0",
     "Pov": "A",
     "EntryNode": "ch01_a_001",
-    "Summary": "A searches the old building for the source of the signal.",
+    "Summary": "A \u5728\u5E9F\u5F03\u65E7\u697C\u91CC\u5BFB\u627E\u4FE1\u53F7\u6E90\u3002",
     "UnlockRules": {
       "unlock_by_ending": "ch00_a_canon_signal"
     }
@@ -15,8 +15,8 @@
       "Chapter": "ch01",
       "Pov": "A",
       "NodeKind": "story",
-      "Title": "Dim Corridor",
-      "Body": "The corridor lights flicker in a rhythm that matches the signal.",
+      "Title": "\u660F\u6697\u8D70\u5ECA",
+      "Body": "\u8D70\u5ECA\u706F\u5FFD\u660E\u5FFD\u6697\uFF0C\u95EA\u70C1\u7684\u8282\u594F\u548C\u624B\u673A\u91CC\u7684\u5F02\u5E38\u4FE1\u53F7\u5B8C\u5168\u4E00\u81F4\u3002",
       "Effects": [
         {
           "Type": "world.set",
@@ -32,7 +32,7 @@
       "Choices": [
         {
           "Id": "inspect_lock",
-          "Text": "Inspect the old lock",
+          "Text": "\u68C0\u67E5\u65E7\u9501",
           "Requirements": {
             "All": [
               {
@@ -54,7 +54,7 @@
         },
         {
           "Id": "push_ahead",
-          "Text": "Push ahead without checking",
+          "Text": "\u4E0D\u68C0\u67E5\uFF0C\u76F4\u63A5\u5411\u524D",
           "Effects": [
             {
               "Type": "attribute.add",
@@ -72,8 +72,8 @@
       "Chapter": "ch01",
       "Pov": "A",
       "NodeKind": "story",
-      "Title": "Mark on the Lock",
-      "Body": "A scratch on the lock matches the broken waveform from the phone.",
+      "Title": "\u9501\u4E0A\u7684\u523B\u75D5",
+      "Body": "\u65E7\u9501\u4E0A\u7684\u4E00\u9053\u523B\u75D5\uFF0C\u6B63\u597D\u5BF9\u5E94\u624B\u673A\u91CC\u90A3\u6BB5\u7834\u788E\u6CE2\u5F62\u7684\u7F3A\u53E3\u3002",
       "Effects": [
         {
           "Type": "attribute.add",
@@ -88,7 +88,7 @@
       "Chapter": "ch01",
       "Pov": "A",
       "NodeKind": "router",
-      "Title": "Final Route Check",
+      "Title": "\u8DEF\u7EBF\u5224\u5B9A",
       "Routes": [
         {
           "Conditions": {
@@ -115,8 +115,8 @@
       "Chapter": "ch01",
       "Pov": "A",
       "NodeKind": "ending",
-      "Title": "Closed Ending - Lost Signal",
-      "Body": "A loses the trail and leaves with only a headache.",
+      "Title": "\u5C01\u95ED\u7ED3\u5C40 - \u4FE1\u53F7\u4E22\u5931",
+      "Body": "A \u8DDF\u4E22\u4E86\u4FE1\u53F7\uFF0C\u53EA\u5E26\u7740\u8D8A\u6765\u8D8A\u91CD\u7684\u5934\u75DB\u79BB\u5F00\u65E7\u697C\u3002",
       "Ending": {
         "Id": "ch01_a_closed_lost"
       }
@@ -126,8 +126,8 @@
       "Chapter": "ch01",
       "Pov": "A",
       "NodeKind": "ending",
-      "Title": "Canon Ending - Signal Trace",
-      "Body": "A finds the first stable trace of the anomaly.",
+      "Title": "\u6B63\u53F2\u7ED3\u5C40 - \u4FE1\u53F7\u8F68\u8FF9",
+      "Body": "A \u627E\u5230\u4E86\u5F02\u5E38\u7B2C\u4E00\u6B21\u7A33\u5B9A\u91CD\u590D\u7684\u75D5\u8FF9\u3002",
       "Ending": {
         "Id": "ch01_a_canon_trace"
       }
@@ -140,8 +140,8 @@
       "Pov": "A",
       "EndingType": "closed",
       "Category": "lost_trace",
-      "Title": "Lost Signal",
-      "Summary": "A leaves the old building without finding the trace.",
+      "Title": "\u4FE1\u53F7\u4E22\u5931",
+      "Summary": "A \u6CA1\u80FD\u627E\u5230\u7A33\u5B9A\u75D5\u8FF9\uFF0C\u53EA\u80FD\u6682\u65F6\u79BB\u5F00\u5E9F\u5F03\u65E7\u697C\u3002",
       "Effects": [
         {
           "Type": "ending.unlock",
@@ -155,8 +155,8 @@
       "Pov": "A",
       "EndingType": "canon",
       "Category": "mainline",
-      "Title": "Signal Trace",
-      "Summary": "A finds proof that the anomaly has a repeatable pattern.",
+      "Title": "\u4FE1\u53F7\u8F68\u8FF9",
+      "Summary": "A \u627E\u5230\u4E86\u5F02\u5E38\u5177\u6709\u91CD\u590D\u89C4\u5F8B\u7684\u8BC1\u636E\u3002",
       "CanonState": {
         "world.timeline.anomaly_phase": "active",
         "world.flags.a_knows_anomaly_exists": "true",

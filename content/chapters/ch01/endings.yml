@@ -4,8 +4,8 @@ endings:
     pov: A
     ending_type: closed
     category: lost_trace
-    title: Lost Signal
-    summary: A leaves the old building without finding the trace.
+    title: 信号丢失
+    summary: A 没能找到稳定痕迹，只能暂时离开废弃旧楼。
     effects:
       - type: ending.unlock
         target: endings.ch01_a_closed_lost
@@ -15,8 +15,8 @@ endings:
     pov: A
     ending_type: canon
     category: mainline
-    title: Signal Trace
-    summary: A finds proof that the anomaly has a repeatable pattern.
+    title: 信号轨迹
+    summary: A 找到了异常具有重复规律的证据。
     canon_state:
       world.timeline.anomaly_phase: active
       world.flags.a_knows_anomaly_exists: true
